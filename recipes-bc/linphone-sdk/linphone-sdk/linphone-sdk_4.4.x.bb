@@ -1,16 +1,16 @@
-# Same as the "4.5.x" recipe for the moment, this recipe must always evolve to
-# work with the last stable linphone-sdk version.
+# Used on the release 4.5 branch, for a stable version please use the "latest" recipe
 VERSION_DEPENDENT_DEPENDS="python3-native python3-pystache-native python3-six-native"
 VERSION_DEPENDENT_INHERIT="python3native"
 
 # The default commit sha used if LINPHONE_SDK_REV is not set and LATEST_REVISIONS disabled
-# 5.0.0-alpha
-DEFAULT_COMMIT="7320211a738ff5004fbe21e5bf37fb72181cc1f9"
+# 4.5.14
+DEFAULT_COMMIT="d4d6356a615e2eec7ea1a957ec40f6fd143f6006"
 
 require linphone-sdk.inc
 
 inherit gitpkgv
 
 PR = "${INC_PR}.0"
-PV = "latest"
+PV = "4.4.x"
 PKGV = "${GITPKGVTAG}"
+

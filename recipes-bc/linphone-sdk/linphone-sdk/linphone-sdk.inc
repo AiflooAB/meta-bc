@@ -6,7 +6,7 @@ SECTION_linphonec =  "console/network"
 
 INC_PR = "r0"
 
-DEPENDS = "git-native doxygen-native mariadb pulseaudio alsa-lib virtual/gettext sqlite3 mariadb zlib perl-native ${VERSION_DEPENDENT_DEPENDS}"
+DEPENDS = "git-native doxygen-native python3-native python3-pystache-native python3-six-native pulseaudio alsa-lib virtual/gettext sqlite3 zlib perl-native"
 
 PROVIDES = "linphone-sdk"
 
@@ -40,7 +40,7 @@ python () {
     print(d.getVar('SRCREV', True))
 }
 
-SRC_URI = "gitsm://gitlab.linphone.org/BC/public/linphone-sdk.git;protocol=https;branch=${LINPHONE_SDK_BRANCH};"
+SRC_URI = "gitsm://gitlab.linphone.org/BC/public/linphone-sdk.git;protocol=https;branch=release/5.0;"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=ff3103b5db8ba4e2c66c511b7a73e407"
 
 PACKAGECONFIG ??= "sqlite zlib bzrtp ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'video', '', d)}"
@@ -51,7 +51,7 @@ PACKAGECONFIG[bzrtp]= " -DENABLE_BZRTP=YES, -DENABLE_BZRTP=NO"
 PACKAGECONFIG[mdns]= "-DENABLE_MDNS=YES,-DENABLE_MDNS=NO"
 
 EXTRA_OECMAKE ??= " "
-EXTRA_OECMAKE += " -DENABLE_CONSOLE_UI=NO -DENABLE_GTK_UI=NO -DENABLE_CXX_WRAPPER=YES -DENABLE_VCARD=YES -DENABLE_VPX=NO -DENABLE_XML2=NO -DENABLE_SQLITE=NO -DENABLE_ZLIB=NO -DENABLE_SOCI_MYSQL=YES -DENABLE_LDAP=NO"
+EXTRA_OECMAKE += " -DENABLE_CONSOLE_UI=NO -DENABLE_GTK_UI=NO -DENABLE_CXX_WRAPPER=YES -DENABLE_VCARD=YES -DENABLE_VPX=NO -DENABLE_XML2=NO -DENABLE_SQLITE=YES -DENABLE_ZLIB=NO -DENABLE_SOCI_MYSQL=NO -DENABLE_LDAP=NO -DENABLE_DAEMON=YES"
 
 EXTRA_OECMAKE += " -DENABLE_UNIT_TESTS=YES -DENABLE_TESTS=YES"
 

@@ -8,7 +8,7 @@ INC_PR = "r0"
 PROVIDES = "flexisip flexisip-proxy flexisip-presence flexisip-conference"
 
 DEPENDS = "libsofia-sip-ua-bc linphone-sdk mariadb redis"
-RDEPENDS_${PN} = "lsb"
+# RDEPENDS_${PN} = "lsb" # Removed in yocto 3.0
 S = "${WORKDIR}/git"
 
 inherit cmake systemd
