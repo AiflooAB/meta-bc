@@ -16,7 +16,8 @@ python () {
     print(d.getVar('SRCREV', True))
 }
 
-SRC_URI = "gitsm://gitlab.linphone.org/BC/public/linphone-sdk.git;protocol=https;branch=release/5.0;"
+SRC_URI  = "gitsm://gitlab.linphone.org/BC/public/linphone-sdk.git;protocol=https;branch=release/5.0;"
+SRC_URI += "file://call-stats.patch"
 
 PV = "git_${SRCREV}"
 PKGV = "${GITPKGVTAG}"

@@ -1,0 +1,20 @@
+--- linphone-sdk/liblinphone/daemon/commands/call-stats.cc	2021-10-10 19:26:55.499286281 +0200
++++ linphone-sdk/liblinphone/daemon/commands/call-stats.cc.new	2021-10-10 19:26:51.799270213 +0200
+@@ -73,7 +73,15 @@
+ 	}
+ 
+ 	ostringstream ostr;
+-	ostr << CallStatsEvent(app, call, linphone_call_get_audio_stats(call)).getBody();
+-	ostr << CallStatsEvent(app, call, linphone_call_get_video_stats(call)).getBody();
++
++	LinphoneCallStats* stats = nullptr;
++	stats = linphone_call_get_audio_stats(call);
++	if (nullptr != stats) {
++		ostr << CallStatsEvent(app, call, stats).getBody();
++	}
++	stats = linphone_call_get_video_stats(call);
++	if (nullptr != stats) {
++		ostr << CallStatsEvent(app, call, stats).getBody();
++	}
+ 	app->sendResponse(Response(ostr.str(), Response::Ok));
+ }
